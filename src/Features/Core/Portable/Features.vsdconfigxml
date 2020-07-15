@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns="http://schemas.microsoft.com/vstudio/vsdconfig/2008">
+
+    <DefineGuid Name="guidFasterCondBPId" Value="3b826754-fbd1-4a5d-87f9-653633f84c2f"/>
+    
+    <ManagedComponent
+    ComponentId="guidFasterCondBPId"
+    ComponentLevel="2000000"
+    AssemblyName="Microsoft.CodeAnalysis.Features">
+
+	<Class Name="Microsoft.CodeAnalysis.Features.ConditionBreakpointResolver">
+		<Implements>
+			<InterfaceGroup Priority="Normal">
+				<NoFilter/>
+				<Interface Name="IDkmClrBreakpointConditionRequestResolver"/>
+			</InterfaceGroup>
+		</Implements>
+	</Class>
+
+  </ManagedComponent>
+
+</Configuration>
