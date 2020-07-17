@@ -24,15 +24,12 @@
     </PackageDescription>
   </PropertyGroup>
   <ItemGroup Label="NuGet">
-    <NuspecProperty Include="MicrosoftCSharpVersion=$(MicrosoftCSharpVersion)"/>
-    <NuspecProperty Include="MicrosoftVisualStudioCompositionVersion=$(MicrosoftVisualStudioCompositionVersion)"/>
-    <NuspecProperty Include="SystemThreadingTasksDataflowVersion=$(SystemThreadingTasksDataflowVersion)"/>
+    <NuspecProperty Include="MicrosoftCSharpVersion=$(MicrosoftCSharpVersion)" />
+    <NuspecProperty Include="MicrosoftVisualStudioCompositionVersion=$(MicrosoftVisualStudioCompositionVersion)" />
+    <NuspecProperty Include="SystemThreadingTasksDataflowVersion=$(SystemThreadingTasksDataflowVersion)" />
   </ItemGroup>
   <ItemGroup Label="PkgDef">
-    <PkgDefPackageRegistration Include="{6cf2e545-6109-4730-8883-cf43d7aec3e1}"
-                               Name="RoslynPackage"
-                               Class="Microsoft.VisualStudio.LanguageServices.Setup.RoslynPackage"
-                               AllowsBackgroundLoad="true"/>
+    <PkgDefPackageRegistration Include="{6cf2e545-6109-4730-8883-cf43d7aec3e1}" Name="RoslynPackage" Class="Microsoft.VisualStudio.LanguageServices.Setup.RoslynPackage" AllowsBackgroundLoad="true" />
     <None Include="PackageRegistration.pkgdef" PkgDefEntry="FileContent" />
   </ItemGroup>
   <ItemGroup Label="Build Items">
@@ -68,9 +65,9 @@
   </ItemGroup>
   <ItemGroup Label="Project References">
     <ProjectReference Include="..\..\..\Compilers\Core\Portable\Microsoft.CodeAnalysis.csproj" />
-    <ProjectReference Include="..\..\..\EditorFeatures\Core\Microsoft.CodeAnalysis.EditorFeatures.csproj"/>
-    <ProjectReference Include="..\..\..\EditorFeatures\Core.Wpf\Microsoft.CodeAnalysis.EditorFeatures.Wpf.csproj"/>
-    <ProjectReference Include="..\..\..\Features\LanguageServer\Protocol\Microsoft.CodeAnalysis.LanguageServer.Protocol.csproj"/>
+    <ProjectReference Include="..\..\..\EditorFeatures\Core\Microsoft.CodeAnalysis.EditorFeatures.csproj" />
+    <ProjectReference Include="..\..\..\EditorFeatures\Core.Wpf\Microsoft.CodeAnalysis.EditorFeatures.Wpf.csproj" />
+    <ProjectReference Include="..\..\..\Features\LanguageServer\Protocol\Microsoft.CodeAnalysis.LanguageServer.Protocol.csproj" />
     <ProjectReference Include="..\..\..\EditorFeatures\Text\Microsoft.CodeAnalysis.EditorFeatures.Text.csproj" />
     <ProjectReference Include="..\..\..\Workspaces\Core\Portable\Microsoft.CodeAnalysis.Workspaces.csproj" />
     <ProjectReference Include="..\..\..\Features\Core\Portable\Microsoft.CodeAnalysis.Features.csproj" />
@@ -129,12 +126,10 @@
     <Reference Include="UIAutomationTypes" />
     <PackageReference Include="EnvDTE" Version="$(EnvDTEVersion)" />
     <PackageReference Include="EnvDTE80" Version="$(EnvDTE80Version)" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Elfie" Version="$(MicrosoftCodeAnalysisElfieVersion)"/>
+    <PackageReference Include="Microsoft.CodeAnalysis.Elfie" Version="$(MicrosoftCodeAnalysisElfieVersion)" />
     <PackageReference Include="Microsoft.CSharp" Version="$(MicrosoftCSharpVersion)" />
-    <PackageReference Include="Microsoft.ServiceHub.Client" Version="$(MicrosoftServiceHubClientVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Debugger.Engine-implementation" Version="$(MicrosoftVisualStudioDebuggerEngineimplementationVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Debugger.UI.Interfaces" Version="$(MicrosoftVisualStudioDebuggerUIInterfacesVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Telemetry" Version="$(MicrosoftVisualStudioTelemetryVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.RemoteControl" Version="$(MicrosoftVisualStudioRemoteControlVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.OLE.Interop" Version="$(MicrosoftVisualStudioOLEInteropVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Interop.10.0" Version="$(MicrosoftVisualStudioShellInterop100Version)" />
@@ -157,7 +152,6 @@
     <PackageReference Include="Microsoft.VisualStudio.GraphModel" Version="$(MicrosoftVisualStudioGraphModelVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.CallHierarchy.Package.Definitions" Version="$(MicrosoftVisualStudioCallHierarchyPackageDefinitionsVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Language.CallHierarchy" Version="$(MicrosoftVisualStudioLanguageCallHierarchyVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Composition" Version="$(MicrosoftVisualStudioCompositionVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioShellDesignVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Language.NavigateTo.Interfaces" Version="$(MicrosoftVisualStudioLanguageNavigateToInterfacesVersion)" />
@@ -165,12 +159,11 @@
     <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.12.0" Version="$(MicrosoftVisualStudioTextManagerInterop120Version)" />
     <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.12.1.DesignTime" Version="$(MicrosoftVisualStudioTextManagerInterop121DesignTimeVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.TextManager.Interop.16.0.DesignTime" Version="$(MicrosoftVisualStudioTextManagerInterop160DesignTimeVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingVersion)"/>
-    <PackageReference Include="Microsoft.VisualStudio.VsInteractiveWindow" Version="$(MicrosoftVisualStudioVsInteractiveWindowVersion)"/>
+    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.VsInteractiveWindow" Version="$(MicrosoftVisualStudioVsInteractiveWindowVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Designer.Interfaces" Version="$(MicrosoftVisualStudioDesignerInterfacesVersion)" />
-    <PackageReference Include="Microsoft.DiaSymReader" Version="$(MicrosoftDiaSymReaderVersion)"/>
+    <PackageReference Include="Microsoft.DiaSymReader" Version="$(MicrosoftDiaSymReaderVersion)" />
     <PackageReference Include="Microsoft.MSXML" Version="$(MicrosoftMSXMLVersion)" />
-    <PackageReference Include="StreamJsonRpc" Version="$(StreamJsonRpcVersion)" />
     <PackageReference Include="VSLangProj" Version="$(VSLangProjVersion)" />
     <PackageReference Include="VSLangProj2" Version="$(VSLangProj2Version)" />
     <PackageReference Include="VSLangProj80" Version="$(VSLangProj80Version)" />

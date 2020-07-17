@@ -1,43 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Composition;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Roslyn.Utilities;
-using Microsoft.CodeAnalysis.EditAndContinue;
-using Microsoft.CodeAnalysis.Host.Mef;
 using Microsoft.VisualStudio.Debugger;
 using Microsoft.VisualStudio.Debugger.Clr;
 using Microsoft.VisualStudio.Debugger.ComponentInterfaces;
-using Microsoft.VisualStudio.Debugger.Breakpoints;
 using Microsoft.VisualStudio.Debugger.Symbols;
+//using Microsoft.VisualStudio.Debugger.Utilities.Mef;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.IO;
-//using VSDebugEngine.ManagedEnc.Remap;
 using System.Globalization;
-using System.Diagnostics;
-
-
-using System;
-using System.ComponentModel.Composition;
-using System.Linq;
-using System.Threading;
-using Microsoft.CodeAnalysis.Editor.Host;
-using Microsoft.CodeAnalysis.Host.Mef;
-using Microsoft.CodeAnalysis.Internal.Log;
-using Microsoft.CodeAnalysis.Notification;
-using Microsoft.VisualStudio.ComponentModelHost;
-using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Roslyn.Utilities;
+//using System.Composition;
 
 
 namespace Microsoft.CodeAnalysis.Features
 {
     internal sealed class ConditionBreakpointResolver : IDkmClrBreakpointConditionRequestResolver
     {
+        //[Import]
+        //public IEditAndContinueManagedModuleUpdateProvider Test { get; set; }
+
         public struct ActiveStatementUpdate
         {
             public Guid m_ThreadId { get; set; }
@@ -70,6 +53,7 @@ namespace Microsoft.CodeAnalysis.Features
             public ReadOnlyCollection<ActiveStatementUpdate> ActiveStatements { get; set; }
             public ReadOnlyCollection<DkmExceptionRegionUpdate> ExceptionRegions { get; set; }
         }
+
         DkmManagedModuleUpdate IDkmClrBreakpointConditionRequestResolver.GetUpdate(DkmClrBreakpointConditionRequest clrBreakpointConditionRequest, DkmThread Thread, DkmSourcePosition UpdatePosition)
         {
             // Temporarily using full path (Chuck says this is OK since this is only temporary and for me)
@@ -84,9 +68,11 @@ namespace Microsoft.CodeAnalysis.Features
             // This should all happen instantaneously so that the user never sees this on-screen
             File.WriteAllText(currPath, appendedCSFile);
 
+            //            IComponentModel componentModel = ComponentManager.GetComponentModel();
+            //IComponentModel componentModel = ComponentManager.GetComponentModel();
+
             /*
-            IComponentModel componentModel = ComponentManager.GetComponentModel();
-            s_providers = componentModel.DefaultExportProvider.GetExports<IEditAndContinueManagedModuleUpdateProvider, UIContextMetadata>();
+            var providers = componentModel.DefaultExportProvider.GetExports<IEditAndContinueManagedModuleUpdateProvider, UIContextMetadata>();
 
 
             try
