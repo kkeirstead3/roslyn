@@ -117,16 +117,29 @@
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="$(SystemThreadingTasksExtensionsVersion)" />
     <PackageReference Include="Microsoft.DiaSymReader" Version="$(MicrosoftDiaSymReaderVersion)" />
     <PackageReference Include="Microsoft.CodeAnalysis.AnalyzerUtilities" Version="$(MicrosoftCodeAnalysisAnalyzerUtilitiesVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Debugger.UI.Interfaces" Version="$(MicrosoftVisualStudioDebuggerUIInterfacesVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostVersion)" />
+    <PackageReference Include="VSLangProj140" Version="$(VSLangProj140Version)" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Features.vsdconfigxml" />
     <VsdConfigXmlFiles Include="Features.vsdconfigxml" />
   </ItemGroup>
-  <Import Project="$(RepositoryEngineeringDir)targets\Vsdconfig.targets"/>
+  <Import Project="$(RepositoryEngineeringDir)targets\Vsdconfig.targets" />
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.Debugger.Engine.dll">
       <HintPath>D:\Sources\Concord\Concord\src\Dispatcher\Managed\RemoteDll\obj\Debug\Microsoft.VisualStudio.Debugger.Engine.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Master\Common7\IDE\Extensions\Microsoft\LiveShare\Agent\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <PackageReference Include="System.Collections.Immutable" Version="$(SystemCollectionsImmutableVersion)" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Elfie" Version="$(MicrosoftCodeAnalysisElfieVersion)" />
   </ItemGroup>
   <Import Project="..\..\..\Compilers\Core\AnalyzerDriver\AnalyzerDriver.projitems" Label="Shared" />
   <Import Project="..\..\..\Dependencies\CodeAnalysis.Debugging\Microsoft.CodeAnalysis.Debugging.projitems" Label="Shared" />

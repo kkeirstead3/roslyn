@@ -18,8 +18,12 @@ using System.IO;
 //using VSDebugEngine.ManagedEnc.Remap;
 using System.Globalization;
 using System.Diagnostics;
+using System.ComponentModel.Composition;
+using Microsoft.VisualStudio.Debugger.UI.Interfaces;
+using Microsoft.VisualStudio.ComponentModelHost;
+using VSLangProj140;
 
-
+/*
 using System;
 using System.ComponentModel.Composition;
 using System.Linq;
@@ -32,12 +36,18 @@ using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Roslyn.Utilities;
-
+*/
 
 namespace Microsoft.CodeAnalysis.Features
 {
     internal sealed class ConditionBreakpointResolver : IDkmClrBreakpointConditionRequestResolver
     {
+        //[System.ComponentModel.Composition.Import]
+        //private readonly IEditAndContinueWorkspaceService _encService;
+        
+        [System.ComponentModel.Composition.Import]
+        private readonly Workspace _workspace = null;
+
         public struct ActiveStatementUpdate
         {
             public Guid m_ThreadId { get; set; }
@@ -84,11 +94,24 @@ namespace Microsoft.CodeAnalysis.Features
             // This should all happen instantaneously so that the user never sees this on-screen
             File.WriteAllText(currPath, appendedCSFile);
 
+            var solution = _workspace.CurrentSolution;
+
+            var encService = _workspace.Services.GetService<IEditAndContinueWorkspaceService>();
+
+            Task.Run(async () =>
+            {
+
+                try
+                {
+                    var (summary, deltas) = await encService.EmitSolutionUpdateAsync(solution, CancellationToken.None).ConfigureAwait(false);
+                    //return new ManagedModuleUpdates(summary.ToModuleUpdateStatus(), deltas.SelectAsArray(ModuleUtilities.ToModuleUpdate).ToReadOnlyCollection());
+                }
+                catch (Exception e)
+                {
+                }
+            });            
+
             /*
-            IComponentModel componentModel = ComponentManager.GetComponentModel();
-            s_providers = componentModel.DefaultExportProvider.GetExports<IEditAndContinueManagedModuleUpdateProvider, UIContextMetadata>();
-
-
             try
             {
                 // request the module updates from the providers
